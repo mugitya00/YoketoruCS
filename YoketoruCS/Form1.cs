@@ -230,7 +230,7 @@ namespace YoketoruCS
                         AddScore(timer * PointRate);
                         itemCount--;
                         chrLabels[i].Visible = false;
-                        if (itemCount <= 0)
+                        if (itemCount < 1)
                         {
                             nextState = State.Clear;
                         }
