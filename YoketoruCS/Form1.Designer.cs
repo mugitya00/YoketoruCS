@@ -36,7 +36,7 @@
             labelGameover = new Label();
             labelClear = new Label();
             labelScore = new Label();
-            labelHighScore = new Label();
+            highScore = new Label();
             labelTimer = new Label();
             tempPlayer = new Label();
             labelCopyright = new Label();
@@ -112,15 +112,15 @@
             labelScore.TabIndex = 5;
             labelScore.Text = "00000";
             // 
-            // labelHighScore
+            // highScore
             // 
-            labelHighScore.AutoSize = true;
-            labelHighScore.Font = new Font("Yu Gothic UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            labelHighScore.Location = new Point(374, 57);
-            labelHighScore.Name = "labelHighScore";
-            labelHighScore.Size = new Size(148, 25);
-            labelHighScore.TabIndex = 6;
-            labelHighScore.Text = "ハイスコア：00000";
+            highScore.AutoSize = true;
+            highScore.Font = new Font("Yu Gothic UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            highScore.Location = new Point(374, 57);
+            highScore.Name = "highScore";
+            highScore.Size = new Size(162, 25);
+            highScore.TabIndex = 6;
+            highScore.Text = "HighScore：00000";
             // 
             // labelTimer
             // 
@@ -182,7 +182,7 @@
             Controls.Add(labelCopyright);
             Controls.Add(tempPlayer);
             Controls.Add(labelTimer);
-            Controls.Add(labelHighScore);
+            Controls.Add(highScore);
             Controls.Add(labelScore);
             Controls.Add(labelClear);
             Controls.Add(labelGameover);
@@ -205,7 +205,7 @@
         private Label labelGameover;
         private Label labelClear;
         private Label labelScore;
-        private Label labelHighScore;
+        private Label highScore;
         private Label labelTimer;
         private Label tempPlayer;
         private Label labelCopyright;

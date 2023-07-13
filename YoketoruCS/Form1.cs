@@ -27,7 +27,7 @@ namespace YoketoruCS
 
         static Random random = new Random();
 
-        
+
         //—ñ‹“Žqenum
         enum State
         {
@@ -43,7 +43,7 @@ namespace YoketoruCS
 
         int score;
         int timer;
-        int nighScore = 100;
+        int HighScore = 100;
         int StartTimer => 200;
 
         public Form1()
@@ -61,17 +61,19 @@ namespace YoketoruCS
                 {
                     chrLabels[i].Text = tempPlayer.Text;
                     chrLabels[i].Font = tempPlayer.Font;
+                    chrLabels[i].ForeColor = tempPlayer.ForeColor;
                 }
                 else if (i < ItemIndex)
                 {
                     chrLabels[i].Text = tempObstacle.Text;
                     chrLabels[i].Font = tempObstacle.Font;
+                    chrLabels[i].ForeColor = tempObstacle.ForeColor;
                 }
                 else
                 {
                     chrLabels[i].Text = tempItem.Text;
                     chrLabels[i].Font = tempItem.Font;
-
+                    chrLabels[i].ForeColor = tempObstacle.ForeColor;
                 }
 
             }
@@ -104,7 +106,7 @@ namespace YoketoruCS
                 case State.Game:
                     labelTitle.Visible = false;
                     buttonStart.Visible = false;
-                    labelHighScore.Visible = false;
+                    highScore.Visible = false;
                     labelCopyright.Visible = false;
                     score = 0;
                     UpdateScore();
@@ -122,13 +124,14 @@ namespace YoketoruCS
                 case State.Gameover:
                     labelGameover.Visible = true;
                     buttonTitle.Visible = true;
-                    labelHighScore.Visible = true;
+                    highScore.Visible = true;
                     break;
 
                 case State.Clear:
                     labelClear.Visible = true;
                     buttonTitle.Visible = true;
-                    labelHighScore.Visible = true;
+                    highScore.Visible = true;
+                    UpdateHighScore();
                     break;
 
             }
@@ -267,7 +270,7 @@ namespace YoketoruCS
             return ((mpos.X >= target.Left)
                 && (mpos.X < target.Right)
                 && (mpos.Y >= target.Top)
-                && (mpos.Y < target.Bottom)) ;
+                && (mpos.Y < target.Bottom));
 
         }
 
@@ -280,7 +283,7 @@ namespace YoketoruCS
         void AddScore(int point)
         {
             // TODO “¾“_‰ÁŽZ
-            
+
             score = Math.Min(score + point, ScoreMax);
 
             UpdateScore();
@@ -298,11 +301,17 @@ namespace YoketoruCS
             labelGameover.Visible = false;
             buttonTitle.Visible = false;
             labelClear.Visible = false;
-            labelHighScore.Visible = true;
+            highScore.Visible = true;
             tempPlayer.Visible = false;
             tempObstacle.Visible = false;
             tempItem.Visible = false;
             labelCopyright.Visible = true;
+        }
+
+        void UpdateHighScore()
+        {
+            HighScore = Math.Max(HighScore,score);
+            highScore.Text = $"High Score:{HighScore:00000}";
         }
     }
 }
