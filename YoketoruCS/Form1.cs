@@ -107,6 +107,7 @@ namespace YoketoruCS
                     tempObstacle.Visible = false;
                     tempItem.Visible = false;
                     labelCopyright.Visible = true;
+
                     break;
 
                 case State.Game:
@@ -120,6 +121,7 @@ namespace YoketoruCS
                     {
                         vx[i] = random.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = random.Next(-SpeedMax, SpeedMax + 1);
+                        UpdateScore();
                     }
                     break;
 
@@ -280,6 +282,7 @@ namespace YoketoruCS
         void AddScore(int point)
         {
             // TODO “¾“_‰ÁŽZ
+            
             score = Math.Min(score + point, ScoreMax);
 
             UpdateScore();
