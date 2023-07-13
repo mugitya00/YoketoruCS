@@ -13,8 +13,8 @@ namespace YoketoruCS
         static int ScoreMax => 99999;
 
         static int PlayerMax => 1;
-        static int ItemMax => 3;
-        static int ObstacleMax => 3;
+        static int ItemMax => 8;
+        static int ObstacleMax => 8;
         static int PlayerIndex => 0;
         static int ObstacleIndex => PlayerIndex + PlayerMax;
         static int ItemIndex => ObstacleIndex + ObstacleMax;
@@ -53,9 +53,10 @@ namespace YoketoruCS
             for (int i = 0; i < LabelMax; i++)
             {
                 chrLabels[i] = new Label();
+                chrLabels[i].Visible = false;
                 chrLabels[i].AutoSize = true;
                 chrLabels[i].Text = "(EƒÖE)";
-                chrLabels[i].Top = i * 24;
+                //chrLabels[i].Top = i * 24;
                 Controls.Add(chrLabels[i]);
                 if (i < ObstacleIndex)
                 {
@@ -104,6 +105,7 @@ namespace YoketoruCS
                     break;
 
                 case State.Game:
+                    chrLabels[PlayerIndex].Visible = true;
                     labelTitle.Visible = false;
                     buttonStart.Visible = false;
                     highScore.Visible = false;
