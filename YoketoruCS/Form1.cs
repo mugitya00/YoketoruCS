@@ -97,16 +97,7 @@ namespace YoketoruCS
             switch (currentState)
             {
                 case State.Title:
-                    labelTitle.Visible = true;
-                    buttonStart.Visible = true;
-                    labelGameover.Visible = false;
-                    buttonTitle.Visible = false;
-                    labelClear.Visible = false;
-                    labelHighScore.Visible = true;
-                    tempPlayer.Visible = false;
-                    tempObstacle.Visible = false;
-                    tempItem.Visible = false;
-                    labelCopyright.Visible = true;
+                    Title();
 
                     break;
 
@@ -116,13 +107,16 @@ namespace YoketoruCS
                     labelHighScore.Visible = false;
                     labelCopyright.Visible = false;
                     score = 0;
+                    UpdateScore();
+                    itemCount = ItemMax;
                     timer = StartTimer;
                     for (int i = ObstacleIndex; i < vx.Length; i++)
                     {
                         vx[i] = random.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = random.Next(-SpeedMax, SpeedMax + 1);
-                        UpdateScore();
+                        chrLabels[i].Visible = true;
                     }
+                    RandomObstacleAndItemPosition();
                     break;
 
                 case State.Gameover:
@@ -198,6 +192,10 @@ namespace YoketoruCS
         {
             for (int i = ObstacleIndex; i < chrLabels.Length; i++)
             {
+                //”ñ•\Ž¦‚Ì‚â‚Â‚Íˆ—‚µ‚È‚¢
+                if (!chrLabels[i].Visible) continue;
+                //if(chrLabels[i].Visible == false)continue;
+
                 chrLabels[i].Left += vx[i];
                 chrLabels[i].Top += vy[i];
 
@@ -291,6 +289,20 @@ namespace YoketoruCS
         void UpdateScore()
         {
             labelScore.Text = $"{score:00000}";
+        }
+
+        void Title()
+        {
+            labelTitle.Visible = true;
+            buttonStart.Visible = true;
+            labelGameover.Visible = false;
+            buttonTitle.Visible = false;
+            labelClear.Visible = false;
+            labelHighScore.Visible = true;
+            tempPlayer.Visible = false;
+            tempObstacle.Visible = false;
+            tempItem.Visible = false;
+            labelCopyright.Visible = true;
         }
     }
 }
